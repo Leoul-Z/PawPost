@@ -67,19 +67,8 @@ const Residents = () => {
 
   return (
     <main className="flex-1">
-
-      <section className="bg-surface-container-highest py-20 px-margin-mobile md:px-margin-desktop text-center">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="font-display-lg text-display-lg text-primary mb-6">Meet Our Residents</h1>
-          <p className="font-body-lg text-body-lg text-on-surface-variant text-balance">
-            We partner with responsible breeders to offer premium companions looking for their forever families. Take your time getting to know them.
-          </p>
-        </div>
-      </section>
-
-
-      <section className="border-b border-surface-variant sticky top-[80px] bg-surface/90 backdrop-blur-md z-30">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-4 flex justify-between items-center overflow-x-auto hide-scrollbar">
+      <section className="border-surface-variant sticky top-[80px] bg-surface/90 backdrop-blur-md z-30">
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-3 flex justify-between items-center overflow-x-auto hide-scrollbar">
           <nav className="flex space-x-2 md:space-x-8 min-w-max" aria-label="Pet Categories">
             {tabs.map(tab => (
               <button 

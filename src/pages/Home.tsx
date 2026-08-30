@@ -53,10 +53,12 @@ const Home = () => {
     </div>
 
     <div className="relative h-[450px] md:h-[650px] flex items-end justify-center pt-10">
+      
+      
 
+      {/* Hero Image */}
+      <img className="relative z-10 w-full max-w-[550px] h-auto object-contain object-bottom translate-y-4" src="/images/hero-pets-transparent.png" alt="Golden Retriever and Grey Cat" />
 
-
-      <img className="relative z-10 w-full max-w-[500px] h-auto object-contain object-bottom mix-blend-multiply drop-shadow-l translate-y-2 rounded-3xl" src="/images/hero-pets.jpg" alt="Golden Retriever and Grey Cat" />
     </div>
   </div>
 </section>
