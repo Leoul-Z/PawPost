@@ -25,9 +25,6 @@ const Header = () => {
           <Link className={`transition-colors duration-200 font-body-md text-body-md ${location.pathname.startsWith('/shop') || location.pathname.startsWith('/product') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary'}`} to="/shop">Shop</Link>
           <Link className={`transition-colors duration-200 font-body-md text-body-md ${location.pathname === '/story' ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary'}`} to="/story">Our Story</Link>
           <Link className={`transition-colors duration-200 font-body-md text-body-md ${location.pathname === '/visit' ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary'}`} to="/visit">Visit Us</Link>
-          <div className="w-px h-5 bg-outline-variant mx-2"></div>
-          <Link className={`transition-colors duration-200 font-body-md text-body-md ${location.pathname === '/login' ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary'}`} to="/login">Login</Link>
-          <Link className={`transition-colors duration-200 font-body-md text-body-md ${location.pathname === '/join' ? 'text-primary font-bold' : 'text-on-surface-variant font-semibold hover:text-primary'}`} to="/join">Register</Link>
         </nav>
         <div className="flex items-center space-x-4">
           {location.pathname === '/shop' && (
@@ -35,6 +32,9 @@ const Header = () => {
               <span className="material-symbols-outlined" style={{ fontVariationSettings: `"'FILL' 0"` }}>search</span>
             </button>
           )}
+          <Link to="/login" aria-label="Login" className="text-primary hover:scale-105 transition-transform duration-200 active:scale-95">
+            <span className="material-symbols-outlined" style={{ fontVariationSettings: `"'FILL' 0"` }}>person</span>
+          </Link>
           <Link to="/favorites" aria-label="Favorites" className="text-primary hover:scale-105 transition-transform duration-200 active:scale-95">
             <span className="material-symbols-outlined" style={{ fontVariationSettings: `"'FILL' 0"` }}>favorite</span>
           </Link>
@@ -65,7 +65,6 @@ const Header = () => {
           <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname === '/visit' ? 'text-primary font-bold' : 'text-on-surface'}`} to="/visit">Visit Us</Link>
           <hr className="border-surface-variant" />
           <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname === '/login' ? 'text-primary font-bold' : 'text-on-surface'}`} to="/login">Login</Link>
-          <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname === '/join' ? 'text-primary font-bold' : 'text-on-surface'}`} to="/join">Register</Link>
         </div>
       )}
     </header>

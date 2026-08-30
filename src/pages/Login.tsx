@@ -69,15 +69,7 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="mt-12 mx-auto max-w-sm transform rotate-1">
-          <div className="bg-surface-container-low border border-surface-variant p-4 rounded shadow-sm flex items-start gap-3">
-            <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: `"'FILL' 1"` }}>eco</span>
-            <p className="font-caption text-caption text-on-surface-variant italic leading-relaxed">
-              "We believe every companion deserves the best. Thank you for returning to our little shop."<br />
-              <span className="block mt-1 font-label-md text-label-md not-italic">— The Pawpost Team</span>
-            </p>
-          </div>
-        </div>
+
       </div>
     </main>
   );
