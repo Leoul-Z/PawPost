@@ -4,43 +4,56 @@ import { useStore } from '../context/StoreContext';
 
 const residentsData = [
   {
-    id: 'r1',
-    name: 'Barnaby',
-    age: '3 Years Old',
-    breed: 'Golden Retriever Mix',
+    id: 'd1',
+    name: 'Pongo',
+    age: '2 Years Old',
+    breed: 'Dalmatian',
     gender: 'Male',
-    ageMonths: 36,
+    ageMonths: 24,
     category: 'dogs',
     badge: 'Available',
     badgeType: 'primary',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCbJ5FfVhSZFmqh3FtwKyB0uh2-_RByTxtDs0x4EweKLCJag941iZhs5c41CJf356YP7nCC6mvEO04bWjxDOxFW_FJg_c5GYE_J_Cce-964pJPqoNFWnO_D0BuuSaGYlmxScD72dcL5SNSh2yg7UvKbPz4KQ2LMlGBzgLVNZNrkFUwl9evMeDmhh-Ch1AKYNIGLeyn3zLqHsL3f-w3qtkO4mdE9kEVcK59dxmZtsmcAkzjeNDSKRYcW',
-    description: 'Barnaby is a gentle, old soul who appreciates slow morning walks, afternoon naps in sunbeams, and quiet companionship. He is excellent with children and other calm dogs.'
+    image: '/images/dalmatian1.jpg',
+    description: 'A very active and playful dalmatian who loves to run and play catch. Needs a family with a big backyard.'
   },
   {
-    id: 'r2',
-    name: 'Luna',
-    age: '4 Months',
-    breed: 'Domestic Shorthair (Calico)',
-    gender: 'Female',
-    ageMonths: 4,
-    category: 'cats',
+    id: 'd2',
+    name: 'Balto',
+    age: '3 Years Old',
+    breed: 'Siberian Husky',
+    gender: 'Male',
+    ageMonths: 36,
+    category: 'dogs',
     badge: null,
     badgeType: 'primary',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCyCAJCKo8kpFTk4QlHGZrBizh5g0j1MCphsUG6XuF6IHp98Z1VuOYJ5P4rgI4DaR1RezjsBh4j4piXx5RGQ8RphRZLLFpaVQ9VLR9ZX_hepn9jKK_olQnrc7bd5gUVUKWDtL5b7g0_xsVnv_hE1xXFnsGb5hHghdd3On9FHncOlfq9u1qnlbwb2mjMHBO_8iD1rzSbqLsGYd8pxoThJgfDuapRfg_3vTTOfuJNNTDBy3Cw3aYTbfPd',
-    description: 'Curious, fiercely independent, yet surprisingly cuddly when she tires herself out. Luna needs an environment with plenty of vertical space to explore and puzzle toys to keep her sharp mind engaged.'
+    image: '/images/husky.jpg',
+    description: 'High energy and very vocal. He loves long runs in the cold weather and is very affectionate with his owners.'
   },
   {
-    id: 'r3',
-    name: 'Pip & Pop',
-    age: '2 Years',
-    breed: 'Holland Lop Rabbits',
-    gender: 'Males',
-    ageMonths: 24,
-    category: 'small',
-    badge: 'Bonded Pair',
+    id: 'd3',
+    name: 'Titan',
+    age: '4 Years Old',
+    breed: 'Cane Corso',
+    gender: 'Male',
+    ageMonths: 48,
+    category: 'dogs',
+    badge: 'Reserved',
     badgeType: 'secondary',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBD-_7W6pg9cMi45YqpGmmhs69YZuTN__WdwOJcD3PC5lQTVMacZGWsAwTppzpfgPXW2J_3cLRmEWYpkegfGX_oMTViX5gd-3ZW6Zr0Kt2E4My2bdOwx7Hti91k3dvRcPqqz90_3tAzJLYtsnuO12DwZYwXlgXXqINFI3JXJJGuKBWb0FiTGs_WB_ZTfBd4WNLy6j1AY-B2-qKnbbxq1tUsjLVCk5oA2yWD1xB0lRIq79PUTg0qM9eN',
-    description: 'These two brothers must be purchased together. They are litter-trained, enjoy foraging for fresh herbs, and will happily binky around a bunny-proofed living room.'
+    image: '/images/cane-corso.jpg',
+    description: 'A gentle giant. Titan is very protective of his family but extremely calm and loving around children.'
+  },
+  {
+    id: 'd4',
+    name: 'Duke',
+    age: '1 Year Old',
+    breed: 'Doberman Pinscher',
+    gender: 'Male',
+    ageMonths: 12,
+    category: 'dogs',
+    badge: 'Available',
+    badgeType: 'primary',
+    image: '/images/doberman.jpg',
+    description: 'Highly intelligent and trainable. Duke is loyal, fearless, and always alert, making him an excellent guard dog and companion.'
   }
 ];
 
@@ -52,9 +65,7 @@ const Residents = () => {
 
   const tabs = [
     { id: 'all', label: 'All Residents' },
-    { id: 'dogs', label: 'Dogs & Puppies' },
-    { id: 'cats', label: 'Cats & Kittens' },
-    { id: 'small', label: 'Small Companions' },
+    { id: 'dogs', label: 'Dogs & Puppies' }
   ];
 
   const filteredResidents = residentsData
@@ -97,7 +108,6 @@ const Residents = () => {
         </div>
       </section>
 
-
       <section className="py-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           {filteredResidents.map((resident) => (
@@ -129,23 +139,15 @@ const Residents = () => {
                   <button onClick={() => navigate(`/resident/${resident.id}`)} className="flex-1 bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md py-3 rounded-lg hover:border-primary hover:text-primary transition-colors" type="button">
                     Read Profile
                   </button>
-                  <button onClick={() => alert(`Inquiry sent for ${resident.name}!`)} className="flex-1 bg-primary text-on-primary font-label-md text-label-md py-3 rounded-lg hover:bg-on-primary-fixed-variant transition-colors shadow-sm" type="button">
-                    Inquire
+                  <button onClick={() => alert(`Interest expressed for ${resident.name}!`)} className="flex-1 bg-primary text-on-primary font-label-md text-label-md py-3 rounded-lg hover:bg-on-primary-fixed-variant transition-colors shadow-sm" type="button">
+                    Express Interest
                   </button>
                 </div>
               </div>
             </article>
           ))}
-
         </div>
 
-        {filteredResidents.length > 0 && (
-          <div className="mt-20 text-center">
-            <button className="border-2 border-primary text-primary font-label-md text-label-md px-8 py-3 rounded-full hover:bg-primary hover:text-on-primary transition-colors duration-300" type="button">
-              View More Residents
-            </button>
-          </div>
-        )}
         {filteredResidents.length === 0 && (
           <div className="mt-10 text-center py-20 bg-surface-container rounded-2xl">
              <h2 className="font-headline-md text-on-surface mb-2">No residents found in this category.</h2>

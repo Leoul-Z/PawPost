@@ -2,60 +2,72 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
 
 const mockDatabase: Record<string, any> = {
-  'r1': {
-    id: 'r1',
-    name: 'Barnaby',
-    age: '3 Years Old',
-    breed: 'Golden Retriever Mix',
+  'd1': {
+    id: 'd1',
+    name: 'Pongo',
+    age: '2 Years Old',
+    breed: 'Dalmatian',
     gender: 'Male',
     size: 'Large',
-    price: 250,
     images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCbJ5FfVhSZFmqh3FtwKyB0uh2-_RByTxtDs0x4EweKLCJag941iZhs5c41CJf356YP7nCC6mvEO04bWjxDOxFW_FJg_c5GYE_J_Cce-964pJPqoNFWnO_D0BuuSaGYlmxScD72dcL5SNSh2yg7UvKbPz4KQ2LMlGBzgLVNZNrkFUwl9evMeDmhh-Ch1AKYNIGLeyn3zLqHsL3f-w3qtkO4mdE9kEVcK59dxmZtsmcAkzjeNDSKRYcW',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCbJ5FfVhSZFmqh3FtwKyB0uh2-_RByTxtDs0x4EweKLCJag941iZhs5c41CJf356YP7nCC6mvEO04bWjxDOxFW_FJg_c5GYE_J_Cce-964pJPqoNFWnO_D0BuuSaGYlmxScD72dcL5SNSh2yg7UvKbPz4KQ2LMlGBzgLVNZNrkFUwl9evMeDmhh-Ch1AKYNIGLeyn3zLqHsL3f-w3qtkO4mdE9kEVcK59dxmZtsmcAkzjeNDSKRYcW'
+      '/images/dalmatian1.jpg',
+      '/images/dalmatian1.jpg'
     ],
-    description: "Barnaby is a gentle, old soul who appreciates slow morning walks, afternoon naps in sunbeams, and quiet companionship. He is excellent with children and other calm dogs. Barnaby came to us from a local rescue and has been nothing but a sweetheart since his arrival. He is fully vaccinated, microchipped, and ready for his forever home.",
+    description: "A very active and playful dalmatian who loves to run and play catch. Needs a family with a big backyard. Pongo is fully vaccinated, microchipped, and ready for his forever home.",
     health: ['Vaccinated', 'Microchipped', 'Neutered'],
-    temperament: ['Gentle', 'Calm', 'Good with Kids'],
+    temperament: ['Active', 'Playful', 'Energetic'],
   },
-  'r2': {
-    id: 'r2',
-    name: 'Luna',
-    age: '4 Months',
-    breed: 'Domestic Shorthair (Calico)',
-    gender: 'Female',
-    size: 'Small',
-    price: 150,
+  'd2': {
+    id: 'd2',
+    name: 'Balto',
+    age: '3 Years Old',
+    breed: 'Siberian Husky',
+    gender: 'Male',
+    size: 'Large',
     images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCyCAJCKo8kpFTk4QlHGZrBizh5g0j1MCphsUG6XuF6IHp98Z1VuOYJ5P4rgI4DaR1RezjsBh4j4piXx5RGQ8RphRZLLFpaVQ9VLR9ZX_hepn9jKK_olQnrc7bd5gUVUKWDtL5b7g0_xsVnv_hE1xXFnsGb5hHghdd3On9FHncOlfq9u1qnlbwb2mjMHBO_8iD1rzSbqLsGYd8pxoThJgfDuapRfg_3vTTOfuJNNTDBy3Cw3aYTbfPd',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCyCAJCKo8kpFTk4QlHGZrBizh5g0j1MCphsUG6XuF6IHp98Z1VuOYJ5P4rgI4DaR1RezjsBh4j4piXx5RGQ8RphRZLLFpaVQ9VLR9ZX_hepn9jKK_olQnrc7bd5gUVUKWDtL5b7g0_xsVnv_hE1xXFnsGb5hHghdd3On9FHncOlfq9u1qnlbwb2mjMHBO_8iD1rzSbqLsGYd8pxoThJgfDuapRfg_3vTTOfuJNNTDBy3Cw3aYTbfPd'
+      '/images/husky.jpg',
+      '/images/husky.jpg'
     ],
-    description: "Curious, fiercely independent, yet surprisingly cuddly when she tires herself out. Luna needs an environment with plenty of vertical space to explore and puzzle toys to keep her sharp mind engaged.",
-    health: ['Vaccinated', 'Microchipped', 'Spayed'],
-    temperament: ['Playful', 'Curious', 'Independent'],
+    description: "High energy and very vocal. He loves long runs in the cold weather and is very affectionate with his owners. Balto needs an environment where he can burn off energy every day.",
+    health: ['Vaccinated', 'Microchipped', 'Neutered'],
+    temperament: ['Vocal', 'High Energy', 'Affectionate'],
   },
-  'r3': {
-    id: 'r3',
-    name: 'Pip & Pop',
-    age: '2 Years',
-    breed: 'Holland Lop Rabbits',
-    gender: 'Males',
-    size: 'Small',
-    price: 100,
+  'd3': {
+    id: 'd3',
+    name: 'Titan',
+    age: '4 Years Old',
+    breed: 'Cane Corso',
+    gender: 'Male',
+    size: 'Extra Large',
     images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuBD-_7W6pg9cMi45YqpGmmhs69YZuTN__WdwOJcD3PC5lQTVMacZGWsAwTppzpfgPXW2J_3cLRmEWYpkegfGX_oMTViX5gd-3ZW6Zr0Kt2E4My2bdOwx7Hti91k3dvRcPqqz90_3tAzJLYtsnuO12DwZYwXlgXXqINFI3JXJJGuKBWb0FiTGs_WB_ZTfBd4WNLy6j1AY-B2-qKnbbxq1tUsjLVCk5oA2yWD1xB0lRIq79PUTg0qM9eN',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuBD-_7W6pg9cMi45YqpGmmhs69YZuTN__WdwOJcD3PC5lQTVMacZGWsAwTppzpfgPXW2J_3cLRmEWYpkegfGX_oMTViX5gd-3ZW6Zr0Kt2E4My2bdOwx7Hti91k3dvRcPqqz90_3tAzJLYtsnuO12DwZYwXlgXXqINFI3JXJJGuKBWb0FiTGs_WB_ZTfBd4WNLy6j1AY-B2-qKnbbxq1tUsjLVCk5oA2yWD1xB0lRIq79PUTg0qM9eN'
+      '/images/cane-corso.jpg',
+      '/images/cane-corso.jpg'
     ],
-    description: "These two brothers must be purchased together. They are litter-trained, enjoy foraging for fresh herbs, and will happily binky around a bunny-proofed living room.",
-    health: ['Vet Checked', 'Neutered'],
-    temperament: ['Bonded Pair', 'Docile', 'Herb Foragers'],
+    description: "A gentle giant. Titan is very protective of his family but extremely calm and loving around children. He is fully trained and walks perfectly on a leash.",
+    health: ['Vet Checked', 'Neutered', 'Vaccinated'],
+    temperament: ['Protective', 'Calm', 'Gentle'],
+  },
+  'd4': {
+    id: 'd4',
+    name: 'Duke',
+    age: '1 Year Old',
+    breed: 'Doberman Pinscher',
+    gender: 'Male',
+    size: 'Large',
+    images: [
+      '/images/doberman.jpg',
+      '/images/doberman.jpg'
+    ],
+    description: "Highly intelligent and trainable. Duke is loyal, fearless, and always alert, making him an excellent guard dog and companion. He responds well to positive reinforcement training.",
+    health: ['Vet Checked', 'Neutered', 'Vaccinated'],
+    temperament: ['Intelligent', 'Loyal', 'Alert'],
   }
 };
 
 const ResidentDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { toggleFavorite, favorites, addToBasket } = useStore();
+  const { toggleFavorite, favorites } = useStore();
   const petDetails = id ? mockDatabase[id] : null;
 
   if (!petDetails) {
@@ -70,21 +82,6 @@ const ResidentDetail = () => {
   }
 
   const isFavorite = favorites[petDetails.id];
-
-  const handlePurchase = () => {
-    // Add the pet to the basket
-    addToBasket({
-      id: parseInt(petDetails.id.replace(/\D/g, '')) + 9000, // arbitrary ID for the basket
-      name: `${petDetails.name}`,
-      color: petDetails.breed,
-      size: petDetails.age,
-      price: petDetails.price,
-      quantity: 1,
-      image: petDetails.images[0]
-    });
-    alert(`${petDetails.name} added to your basket!`);
-    navigate('/basket');
-  };
 
   return (
     <main className="flex-1 bg-surface-container-lowest pb-20">
@@ -125,15 +122,10 @@ const ResidentDetail = () => {
 
           <div className="flex flex-col py-4">
             <div className="flex items-center gap-2 mb-4">
-              <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-label-md text-[12px] uppercase tracking-wider">Available for Purchase</span>
+              <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-label-md text-[12px] uppercase tracking-wider">Meet Me!</span>
             </div>
             <h1 className="font-display-lg text-[48px] text-on-surface mb-2 leading-tight">{petDetails.name}</h1>
             <p className="font-headline-md text-on-surface-variant mb-6">{petDetails.breed} • {petDetails.gender}</p>
-            <div className="flex items-baseline gap-4 mb-8">
-              <span className="font-display-md text-[32px] text-primary">Br {petDetails.price.toFixed(2)}</span>
-              <span className="font-body-md text-on-surface-variant">Price</span>
-            </div>
-
 
             <div className="grid grid-cols-3 gap-4 mb-8 bg-surface-container rounded-xl p-4 border border-outline-variant/30">
               <div className="text-center">
@@ -154,14 +146,10 @@ const ResidentDetail = () => {
               {petDetails.description}
             </p>
 
-
             <div className="flex flex-col gap-4 mb-12">
-              <button onClick={handlePurchase} className="w-full bg-primary text-on-primary font-label-lg py-4 rounded-xl hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-center gap-2 shadow-sm hover:shadow-md hover:-translate-y-1">
-                <span className="material-symbols-outlined">shopping_cart</span>
-                Buy Now
-              </button>
-              <button onClick={() => alert("We've sent you an email with details!")} className="w-full bg-surface-container border border-outline text-on-surface font-label-lg py-4 rounded-xl hover:bg-surface-container-highest transition-colors">
-                Inquire About {petDetails.name}
+              <button onClick={() => alert(`Your interest for ${petDetails.name} has been recorded! We'll contact you soon.`)} className="w-full bg-primary text-on-primary font-label-lg py-4 rounded-xl hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-center gap-2 shadow-sm hover:shadow-md hover:-translate-y-1">
+                <span className="material-symbols-outlined">waving_hand</span>
+                Express Interest
               </button>
             </div>
 

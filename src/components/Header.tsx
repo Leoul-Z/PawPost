@@ -17,14 +17,14 @@ const Header = () => {
     <header className="w-full top-0 sticky bg-background/80 backdrop-blur-md shadow-sm shadow-on-surface/5 z-40">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
         <Link className="font-display-lg text-display-lg text-primary tracking-tighter cursor-pointer active:scale-95 hover:scale-105 transition-transform duration-200" to="/">
-          Pawpost
+          ሸገር Petland
         </Link>
         <nav className="hidden md:flex space-x-6 items-center flex-1 justify-center ml-8">
           <Link className={`transition-colors duration-200 font-body-md text-body-md ${location.pathname === '/' ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary'}`} to="/">Home</Link>
           <Link className={`transition-colors duration-200 font-body-md text-body-md ${location.pathname.startsWith('/resident') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary'}`} to="/residents">Pets</Link>
           <Link className={`transition-colors duration-200 font-body-md text-body-md ${location.pathname.startsWith('/shop') || location.pathname.startsWith('/product') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary'}`} to="/shop">Shop</Link>
           <Link className={`transition-colors duration-200 font-body-md text-body-md ${location.pathname === '/story' ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary'}`} to="/story">Our Story</Link>
-          <Link className={`transition-colors duration-200 font-body-md text-body-md ${location.pathname === '/visit' ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary'}`} to="/visit">Visit Us</Link>
+          <Link className={`transition-colors duration-200 font-body-md text-body-md ${location.pathname === '/visit' ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary'}`} to="/visit">Contact</Link>
         </nav>
         <div className="flex items-center space-x-4">
           {location.pathname === '/shop' && (
@@ -62,7 +62,7 @@ const Header = () => {
           <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname.startsWith('/resident') ? 'text-primary font-bold' : 'text-on-surface'}`} to="/residents">Pets</Link>
           <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname.startsWith('/shop') || location.pathname.startsWith('/product') ? 'text-primary font-bold' : 'text-on-surface'}`} to="/shop">Shop</Link>
           <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname === '/story' ? 'text-primary font-bold' : 'text-on-surface'}`} to="/story">Our Story</Link>
-          <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname === '/visit' ? 'text-primary font-bold' : 'text-on-surface'}`} to="/visit">Visit Us</Link>
+          <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname === '/visit' ? 'text-primary font-bold' : 'text-on-surface'}`} to="/visit">Contact</Link>
           <hr className="border-surface-variant" />
           <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname === '/login' ? 'text-primary font-bold' : 'text-on-surface'}`} to="/login">Login</Link>
         </div>

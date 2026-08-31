@@ -52,13 +52,9 @@ const Home = () => {
       </div>
     </div>
 
-    <div className="relative h-[450px] md:h-[650px] flex items-end justify-center pt-10">
-      
-      
-
+    <div className="relative h-[450px] md:h-[650px] w-full">
       {/* Hero Image */}
-      <img className="relative z-10 w-full max-w-[550px] h-auto object-contain object-bottom translate-y-4" src="/images/hero-pets-transparent.png" alt="Golden Retriever and Grey Cat" />
-
+      <img className="absolute bottom-0 lg:-bottom-12 right-[-5%] lg:right-[-10%] z-10 w-[120%] lg:w-auto max-w-[500px] lg:max-w-[690px] h-auto object-contain object-bottom pointer-events-none" src="/images/hero-dog-transparent.png" alt="Golden Retriever dog" />
     </div>
   </div>
 </section>
