@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
         <div className="md:col-span-4">
           <Link className="font-display-lg text-display-lg text-primary mb-6 block" to="/">ሸገር Petland</Link>
-          <p className="font-body-md text-body-md text-on-surface-variant mb-6 pr-4">Artisanal goods for your best friend. Carefully curated, thoughtfully crafted.</p>
+          <p className="font-body-md text-body-md text-on-surface-variant mb-6 pr-4">Your trusted destination for premium companions and thoughtfully curated pet goods in Sheger.</p>
           <div className="flex space-x-4">
             <a className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors duration-300" href="https://www.instagram.com/sheger_petland/?__pwa=1#" target="_blank" rel="noopener noreferrer">
               <span className="sr-only">Instagram</span>

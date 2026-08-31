@@ -14,10 +14,10 @@ const Join = () => {
 
         <div className="text-center mb-8">
           <Link className="inline-block mb-4" to="/">
-            <span className="font-display-lg text-display-lg font-bold text-primary tracking-tight">Pawpost</span>
+            <span className="font-display-lg text-[32px] font-bold text-primary tracking-tight">ሸገር Petland</span>
           </Link>
           <h1 className="font-headline-lg text-headline-lg text-on-surface mb-2">Join the Family</h1>
-          <p className="font-body-md text-body-md text-on-surface-variant">Create an account to track orders and save your favorite finds.</p>
+          <p className="font-body-md text-body-md text-on-surface-variant">Create an account to express interest in our companions, track orders, and save your favorite items.</p>
         </div>
 
         <div className="bg-surface-container-lowest border border-surface-variant rounded-xl p-6 md:p-8 soft-shadow relative overflow-hidden">

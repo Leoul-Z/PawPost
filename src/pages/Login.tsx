@@ -14,10 +14,10 @@ const Login = () => {
 
         <div className="text-center mb-8">
           <Link className="inline-block mb-4" to="/">
-            <span className="font-display-lg text-display-lg font-bold text-primary tracking-tight">Pawpost</span>
+            <span className="font-display-lg text-[32px] font-bold text-primary tracking-tight">ሸገር Petland</span>
           </Link>
           <h1 className="font-headline-lg text-headline-lg text-on-surface mb-2">Welcome back</h1>
-          <p className="font-body-md text-body-md text-on-surface-variant">Sign in to continue exploring our artisanal collection.</p>
+          <p className="font-body-md text-body-md text-on-surface-variant">Sign in to track your interests, manage your profile, and explore premium pet accessories.</p>
         </div>
 
         <div className="bg-surface-container-lowest border border-surface-variant rounded-xl p-6 md:p-8 soft-shadow">
@@ -63,7 +63,7 @@ const Login = () => {
 
           <div className="mt-8 text-center">
             <p className="font-body-md text-body-md text-on-surface-variant">
-              New to Pawpost? 
+              New to ሸገር Petland? 
               <Link className="font-label-md text-label-md text-secondary hover:text-on-secondary-fixed-variant transition-colors underline decoration-secondary/30 underline-offset-4 ml-1" to="/join">Create an account</Link>
             </p>
           </div>
