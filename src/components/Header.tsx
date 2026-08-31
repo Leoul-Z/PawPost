@@ -7,16 +7,14 @@ const Header = () => {
   const { basketItems } = useStore();
   const location = useLocation();
 
-  const handleSearch = () => {
-    alert('Search functionality would open here.');
-  };
+
 
   const basketCount = basketItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <header className="w-full top-0 sticky bg-background/80 backdrop-blur-md shadow-sm shadow-on-surface/5 z-40">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
-        <Link className="font-display-lg text-display-lg text-primary tracking-tighter cursor-pointer active:scale-95 hover:scale-105 transition-transform duration-200" to="/">
+        <Link className="font-display-lg text-[24px] md:text-[32px] lg:text-display-lg whitespace-nowrap text-primary tracking-tighter cursor-pointer active:scale-95 hover:scale-105 transition-transform duration-200" to="/">
           ሸገር Petland
         </Link>
         <nav className="hidden md:flex space-x-6 items-center flex-1 justify-center ml-8">
@@ -27,11 +25,7 @@ const Header = () => {
           <Link className={`transition-colors duration-200 font-body-md text-body-md ${location.pathname === '/visit' ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary'}`} to="/visit">Contact</Link>
         </nav>
         <div className="flex items-center space-x-4">
-          {location.pathname === '/shop' && (
-            <button onClick={handleSearch} aria-label="Search" className="text-primary hover:scale-105 transition-transform duration-200 active:scale-95">
-              <span className="material-symbols-outlined" style={{ fontVariationSettings: `"'FILL' 0"` }}>search</span>
-            </button>
-          )}
+
           <Link to="/login" aria-label="Login" className="text-primary hover:scale-105 transition-transform duration-200 active:scale-95">
             <span className="material-symbols-outlined" style={{ fontVariationSettings: `"'FILL' 0"` }}>person</span>
           </Link>

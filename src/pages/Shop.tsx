@@ -18,11 +18,18 @@ const Shop = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [sortOption, setSortOption] = useState('Featured');
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const categories = ['All', 'Accessories', 'Bowls', 'Beds', 'Toys'];
 
   const filteredAndSortedProducts = useMemo(() => {
     let result = products;
+
+    if (searchQuery.trim() !== '') {
+      const query = searchQuery.toLowerCase();
+      result = result.filter(p => p.name.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
+    }
+
     if (activeCategory !== 'All') {
       result = result.filter(p => p.category === activeCategory);
     }
@@ -42,7 +49,7 @@ const Shop = () => {
     }
     
     return result;
-  }, [activeCategory, sortOption]);
+  }, [activeCategory, sortOption, searchQuery]);
 
   const totalPages = Math.ceil(filteredAndSortedProducts.length / ITEMS_PER_PAGE);
   const currentProducts = filteredAndSortedProducts.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
@@ -58,6 +65,16 @@ const Shop = () => {
         <aside className="xl:col-span-1">
           <div className="sticky top-28 space-y-8">
             <div>
+              <div className="relative mb-8">
+                <input 
+                  type="text" 
+                  placeholder="Search products..."
+                  value={searchQuery}
+                  onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
+                  className="w-full bg-surface-container-lowest border border-outline rounded-xl py-3 pl-4 pr-10 font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all shadow-sm"
+                />
+                <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">search</span>
+              </div>
               <h2 className="font-headline-md text-headline-md text-on-surface mb-4">Categories</h2>
               <ul className="space-y-3 font-body-md text-body-md">
                 {categories.map(cat => {
