@@ -1,19 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
+import { residentsData } from './Residents';
+import { products } from './Shop';
 
 const Favorites = () => {
   const { favorites, toggleFavorite, addToBasket } = useStore();
   const navigate = useNavigate();
 
-  // Mock data to resolve IDs to displayable items
-  const mockCatalog: Record<string, any> = {
-    'r1': { type: 'resident', name: 'Barnaby', desc: 'Golden Retriever Mix • Male', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCbJ5FfVhSZFmqh3FtwKyB0uh2-_RByTxtDs0x4EweKLCJag941iZhs5c41CJf356YP7nCC6mvEO04bWjxDOxFW_FJg_c5GYE_J_Cce-964pJPqoNFWnO_D0BuuSaGYlmxScD72dcL5SNSh2yg7UvKbPz4KQ2LMlGBzgLVNZNrkFUwl9evMeDmhh-Ch1AKYNIGLeyn3zLqHsL3f-w3qtkO4mdE9kEVcK59dxmZtsmcAkzjeNDSKRYcW' },
-    'r2': { type: 'resident', name: 'Luna', desc: 'Domestic Shorthair (Calico) • Female', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCyCAJCKo8kpFTk4QlHGZrBizh5g0j1MCphsUG6XuF6IHp98Z1VuOYJ5P4rgI4DaR1RezjsBh4j4piXx5RGQ8RphRZLLFpaVQ9VLR9ZX_hepn9jKK_olQnrc7bd5gUVUKWDtL5b7g0_xsVnv_hE1xXFnsGb5hHghdd3On9FHncOlfq9u1qnlbwb2mjMHBO_8iD1rzSbqLsGYd8pxoThJgfDuapRfg_3vTTOfuJNNTDBy3Cw3aYTbfPd' },
-    'r3': { type: 'resident', name: 'Pip & Pop', desc: 'Holland Lop Rabbits • Males', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBD-_7W6pg9cMi45YqpGmmhs69YZuTN__WdwOJcD3PC5lQTVMacZGWsAwTppzpfgPXW2J_3cLRmEWYpkegfGX_oMTViX5gd-3ZW6Zr0Kt2E4My2bdOwx7Hti91k3dvRcPqqz90_3tAzJLYtsnuO12DwZYwXlgXXqINFI3JXJJGuKBWb0FiTGs_WB_ZTfBd4WNLy6j1AY-B2-qKnbbxq1tUsjLVCk5oA2yWD1xB0lRIq79PUTg0qM9eN' },
-    '1': { type: 'product', id: 1, name: 'Heritage Woven Leash', color: 'Terracotta & Sage', size: 'Standard (5ft)', price: 48, img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC_WMzZZp9Y93kjYiGt746A4vdWkxc29xYfj9r8gwXvkG8NAvTAN4xhTGD-Q_gsyMsTI5q6nivjvuob3srZZ7k7YIxolQ3nJlyCYUT0j9F0PrSjsiRJpetHPpe0tUuI5B-rtoMDso5S0av14Cd5uN19I5oroIzOQ-ZqQqp9W2AWAInpiI4X0u-RhSnsI6lTusfi7S0pS8ZVmHraAMeWHLghyrmPTH_fHrXRBQ1xDbDIKfVo0HpKg0b6' },
-    '2': { type: 'product', id: 2, name: 'Artisanal Ceramic Bowl Set', color: 'Matte Cream', size: 'Medium (4 cups)', price: 65, img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1KsgYqGUgQY-sRsfhv581Q0hSVUAEu4YRb7-txGIYd3CGzlnqW6AWwJVvRn5rlGYIShN2rYw7NFJ7k6VWj8u-eqkbfGV7JsHYyEscQCXmWHEPUZIxUK1uzUYEPSRcO0VEeJNIPs5YtxmNeeRlpbXXWERV3JT5avSKp_b4f8kEMmRv3ScmHJ__QvKRdGieoK14BtJGILZqNkTjUWxcpJ6XQV0Zs0Dd4GvLWK2mIeZYHzkWmvt2pGvS' },
-    '3': { type: 'product', id: 3, name: 'Organic Sweet Potato Chews', color: 'Natural', size: '8 oz bag', price: 18, img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAs30NhCr0ihgMGpzIqi5DU0V-bmABuaaKTwi5uFuvtACBmU6T7HzIEZNkIt_f0iHjuZ5jY2ntv50iouN8_N8pqwrsJVO41r8-kHxA8nhawKQa9rTdPU8a2tblli_ATLwqUjvwfOSazGMAQYZsY_Ajd1zy37P9ggBLCmAy51pxvl5RPZ_jWay8yWuciolG9uwksYUkB_BsDQ8WuL9p7f9znvVFVdQTFRMd8Ju_SXmqXwLXq7NRCMY4-' },
-  };
+  // Dynamically resolve IDs to displayable items
+  const catalog = Object.fromEntries([
+    ...residentsData.map(r => [r.id, { type: 'resident', name: r.name, desc: `${r.breed} • ${r.gender}`, img: r.image }]),
+    ...products.map(p => [p.id.toString(), { type: 'product', id: p.id, name: p.name, color: p.category, size: 'One Size', price: p.price, img: p.image }])
+  ]);
 
   const favoriteIds = Object.keys(favorites).filter(id => favorites[id]);
 
@@ -42,7 +40,7 @@ const Favorites = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {favoriteIds.map(id => {
-              const item = mockCatalog[id];
+              const item = catalog[id];
               if (!item) return null;
 
               return (

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useStore } from '../context/StoreContext';
 
-const residentsData = [
+export const residentsData = [
   {
     id: 'd1',
     name: 'Pongo',

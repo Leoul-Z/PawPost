@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
 import { useState, useMemo } from 'react';
 
-const products = [
+export const products = [
   { id: 1, name: 'Heritage Woven Leash', category: 'Accessories', price: 48, image: 'https://images.unsplash.com/photo-1737988007178-f36e7277ff66?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SGVyaXRhZ2UlMjBXb3ZlbiUyMExlYXNoJTNBfGVufDB8fDB8fHww', isNew: true, desc: 'Hand-dyed cotton rope with solid brass hardware.' },
   { id: 2, name: 'Artisanal Ceramic Dog Bowl', category: 'Bowls', price: 32, image: 'https://images.unsplash.com/photo-1745828186636-8ad05b1ab7cd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fEFydGlzYW5hbCUyMENlcmFtaWMlMjBEb2clMjBCb3dsfGVufDB8fDB8fHww', desc: 'Heavyweight stoneware with a speckled glaze.' },
   { id: 3, name: 'Leather Dog Collar', category: 'Accessories', price: 42, image: 'https://plus.unsplash.com/premium_photo-1692392181661-96c4b34759db?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8TGVhdGhlciUyMERvZyUyMENvbGxhcnxlbnwwfHwwfHx8MA%3D%3D', desc: 'Premium leather with brass details.' },

@@ -15,6 +15,32 @@ const OurStory = () => {
         </div>
       </section>
 
+      <section className="py-16 md:py-24 bg-surface">
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="order-2 lg:order-1 flex flex-col justify-center">
+              <span className="font-label-md text-label-md text-primary uppercase tracking-widest mb-4 block font-bold">The Vision</span>
+              <h2 className="font-display-lg text-[36px] md:text-[48px] text-on-surface mb-6 leading-tight">Meet the Founder</h2>
+              <div className="font-body-lg text-on-surface-variant space-y-6">
+                <p>
+                  At ሸገር Petland, our story begins with a profound love for animals and a vision to elevate the standards of pet care in our community. Every dog that comes through our doors is treated with the same respect, discipline, and affection we give our own.
+                </p>
+                <p>
+                  We believe that a well-trained dog is a happy dog, and a well-informed owner is the key to a harmonious relationship. That's why we focus on ethical breeding, balanced training, and a deep understanding of canine psychology.
+                </p>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2 relative group">
+              <div className="absolute inset-0 bg-[#d2bea9] opacity-30 rounded-[2rem] transform translate-x-4 translate-y-4 lg:translate-x-6 lg:translate-y-6 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+              <img 
+                src="/images/founder.jfif" 
+                alt="Founder of Sheger Petland" 
+                className="relative z-10 w-full h-auto object-cover rounded-[2rem] shadow-xl aspect-[4/5] transition-transform duration-500 group-hover:-translate-y-1" 
+              />
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="py-20 bg-surface">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

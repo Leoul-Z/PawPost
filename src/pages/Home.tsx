@@ -1,9 +1,14 @@
 import { useNavigate } from 'react-router-dom';
+import Residents from './Residents';
+import Shop from './Shop';
+import OurStory from './OurStory';
+import VisitUs from './VisitUs';
 
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <main className="flex-grow">
+    <>
+      <main className="flex-grow">
 
 <section className="relative w-full min-h-[700px] flex items-center overflow-hidden bg-[#fdfbf7] pt-6 md:pt-0">
 
@@ -27,8 +32,8 @@ const Home = () => {
           Shop Now
           <span className="material-symbols-outlined text-[18px]">arrow_outward</span>
         </button>
-        <button onClick={() => navigate('/shop')} className="bg-[#f0eee7] text-[#1e1e1e] font-label-md text-label-md px-8 py-4 rounded-xl hover:bg-[#e4e1da] transition-all duration-300 shadow-sm">
-          Explore Categories
+        <button onClick={() => navigate('/residents')} className="bg-[#f0eee7] text-[#1e1e1e] font-label-md text-label-md px-8 py-4 rounded-xl hover:bg-[#e4e1da] transition-all duration-300 shadow-sm">
+          Meet Our Pets
         </button>
       </div>
 
@@ -52,13 +57,41 @@ const Home = () => {
       </div>
     </div>
 
-    <div className="relative w-full flex items-center justify-center md:justify-end pb-4 md:pb-0">
+    <div className="relative w-full self-stretch flex items-start md:items-center justify-center pb-4 md:pb-0 min-h-[300px] md:min-h-[400px]">
       {/* Hero Image / Logo */}
-      <img className="mb-24 sm:mb-28 md:mb-0 w-full max-w-[450px] sm:max-w-[600px] md:max-w-[550px] lg:max-w-[700px] h-auto object-contain drop-shadow-sm" src="/images/logo-transparent-v2.png" alt="Sheger Petland Logo" />
+      <img className="w-full h-full object-contain object-top md:object-center drop-shadow-sm transform scale-[1.2] sm:scale-[1.3] md:scale-[1.5] lg:scale-[1.6] xl:scale-[1.3] -mt-12 md:-mt-20 lg:-mt-24" src="/images/logo-transparent-v2.png" alt="Sheger Petland Logo" />
     </div>
   </div>
 </section>
 </main>
+      <div id="pets" className="pt-20 md:pt-28 pb-12">
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-4 md:mb-8 text-center">
+          <span className="font-display-lg text-[24px] md:text-[32px] text-primary uppercase tracking-widest mb-2 block font-bold">Meet the Residents</span>
+        </div>
+        <Residents />
+      </div>
+
+      <div id="shop" className="pt-20 md:pt-28 pb-12 border-t border-surface-variant">
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-4 md:mb-8 text-center">
+          <span className="font-display-lg text-[24px] md:text-[32px] text-primary uppercase tracking-widest mb-2 block font-bold">Premium Products</span>
+        </div>
+        <Shop />
+      </div>
+
+      <div id="our-story" className="pt-20 md:pt-28 pb-12 border-t border-surface-variant">
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-4 md:mb-8 text-center">
+          <span className="font-display-lg text-[24px] md:text-[32px] text-primary uppercase tracking-widest mb-2 block font-bold">About Us</span>
+        </div>
+        <OurStory />
+      </div>
+
+      <div id="contact" className="pt-20 md:pt-28 pb-12 border-t border-surface-variant">
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-4 md:mb-8 text-center">
+          <span className="font-display-lg text-[24px] md:text-[32px] text-primary uppercase tracking-widest mb-2 block font-bold">Get In Touch</span>
+        </div>
+        <VisitUs />
+      </div>
+    </>
   );
 };
 
