@@ -51,14 +51,34 @@ const Header = () => {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-surface-container-lowest border-t border-surface-variant shadow-lg py-4 px-margin-mobile flex flex-col space-y-4">
-          <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname === '/' ? 'text-primary font-bold' : 'text-on-surface'}`} to="/">Home</Link>
-          <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname.startsWith('/resident') ? 'text-primary font-bold' : 'text-on-surface'}`} to="/residents">Pets</Link>
-          <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname.startsWith('/shop') || location.pathname.startsWith('/product') ? 'text-primary font-bold' : 'text-on-surface'}`} to="/shop">Shop</Link>
-          <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname === '/story' ? 'text-primary font-bold' : 'text-on-surface'}`} to="/story">Our Story</Link>
-          <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname === '/visit' ? 'text-primary font-bold' : 'text-on-surface'}`} to="/visit">Contact</Link>
-          <hr className="border-surface-variant" />
-          <Link onClick={() => setIsMobileMenuOpen(false)} className={`font-headline-md text-[18px] ${location.pathname === '/login' ? 'text-primary font-bold' : 'text-on-surface'}`} to="/login">Login</Link>
+        <div className="md:hidden absolute top-20 left-0 w-full bg-[#fdfbf7]/95 backdrop-blur-2xl border-t border-[#e4e1da] shadow-[0_20px_40px_-15px_rgba(196,164,132,0.3)] rounded-b-3xl p-6 flex flex-col gap-2 z-50">
+          <Link onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-4 px-4 py-3 rounded-2xl transition-all duration-200 ${location.pathname === '/' ? 'bg-[#f0eee7] text-[#1e1e1e] font-bold' : 'text-[#8e8574] hover:bg-[#f5f3ef] hover:text-[#1e1e1e]'}`} to="/">
+            <span className="material-symbols-outlined" style={{ fontVariationSettings: `"'FILL' ${location.pathname === '/' ? 1 : 0}"` }}>home</span>
+            <span className="font-label-lg text-[18px]">Home</span>
+          </Link>
+          <Link onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-4 px-4 py-3 rounded-2xl transition-all duration-200 ${location.pathname.startsWith('/resident') ? 'bg-[#f0eee7] text-[#1e1e1e] font-bold' : 'text-[#8e8574] hover:bg-[#f5f3ef] hover:text-[#1e1e1e]'}`} to="/residents">
+            <span className="material-symbols-outlined" style={{ fontVariationSettings: `"'FILL' ${location.pathname.startsWith('/resident') ? 1 : 0}"` }}>pets</span>
+            <span className="font-label-lg text-[18px]">Meet Our Pets</span>
+          </Link>
+          <Link onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-4 px-4 py-3 rounded-2xl transition-all duration-200 ${location.pathname.startsWith('/shop') || location.pathname.startsWith('/product') ? 'bg-[#f0eee7] text-[#1e1e1e] font-bold' : 'text-[#8e8574] hover:bg-[#f5f3ef] hover:text-[#1e1e1e]'}`} to="/shop">
+            <span className="material-symbols-outlined" style={{ fontVariationSettings: `"'FILL' ${location.pathname.startsWith('/shop') || location.pathname.startsWith('/product') ? 1 : 0}"` }}>shopping_bag</span>
+            <span className="font-label-lg text-[18px]">Shop</span>
+          </Link>
+          <Link onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-4 px-4 py-3 rounded-2xl transition-all duration-200 ${location.pathname === '/story' ? 'bg-[#f0eee7] text-[#1e1e1e] font-bold' : 'text-[#8e8574] hover:bg-[#f5f3ef] hover:text-[#1e1e1e]'}`} to="/story">
+            <span className="material-symbols-outlined" style={{ fontVariationSettings: `"'FILL' ${location.pathname === '/story' ? 1 : 0}"` }}>auto_stories</span>
+            <span className="font-label-lg text-[18px]">Our Story</span>
+          </Link>
+          <Link onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-4 px-4 py-3 rounded-2xl transition-all duration-200 ${location.pathname === '/visit' ? 'bg-[#f0eee7] text-[#1e1e1e] font-bold' : 'text-[#8e8574] hover:bg-[#f5f3ef] hover:text-[#1e1e1e]'}`} to="/visit">
+            <span className="material-symbols-outlined" style={{ fontVariationSettings: `"'FILL' ${location.pathname === '/visit' ? 1 : 0}"` }}>location_on</span>
+            <span className="font-label-lg text-[18px]">Contact</span>
+          </Link>
+          
+          <hr className="border-[#e4e1da] my-2 mx-4" />
+          
+          <Link onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-4 px-4 py-3 rounded-2xl transition-all duration-200 ${location.pathname === '/login' ? 'bg-[#f0eee7] text-[#1e1e1e] font-bold' : 'text-[#8e8574] hover:bg-[#f5f3ef] hover:text-[#1e1e1e]'}`} to="/login">
+            <span className="material-symbols-outlined" style={{ fontVariationSettings: `"'FILL' ${location.pathname === '/login' ? 1 : 0}"` }}>login</span>
+            <span className="font-label-lg text-[18px]">Login</span>
+          </Link>
         </div>
       )}
     </header>

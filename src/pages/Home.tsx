@@ -26,15 +26,25 @@ const Home = () => {
         The Smarter Way to Care <br/>
         <span className="text-[#c4a484]">for the Ones Who Love You Most.</span>
       </h1>
+      
+      {/* Mobile Wrapper for Buttons + Image */}
+      <div className="flex items-center justify-between gap-4 w-full mb-8 md:mb-12 md:block">
+        
+        {/* Mobile Dog Image */}
+        <div className="md:hidden w-[55%] flex justify-start relative -translate-x-4">
+          <img className="w-full max-h-[280px] object-contain object-bottom drop-shadow-sm origin-bottom scale-[1.1]" src="/images/golden_retriever_hero.png" alt="Golden Retriever Hero" />
+        </div>
 
-      <div className="flex flex-wrap gap-4 mb-12">
-        <button onClick={() => navigate('/shop')} className="bg-[#1e1e1e] text-white font-label-md text-label-md px-8 py-4 rounded-xl flex items-center gap-2 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-          Shop Now
-          <span className="material-symbols-outlined text-[18px]">arrow_outward</span>
-        </button>
-        <button onClick={() => navigate('/residents')} className="bg-[#f0eee7] text-[#1e1e1e] font-label-md text-label-md px-8 py-4 rounded-xl hover:bg-[#e4e1da] transition-all duration-300 shadow-sm">
-          Meet Our Pets
-        </button>
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 flex-1 md:flex-initial">
+          <button onClick={() => navigate('/shop')} className="bg-[#1e1e1e] text-white font-label-md text-sm md:text-label-md px-4 md:px-8 py-2.5 md:py-4 rounded-xl flex items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 w-full sm:w-auto">
+            Shop Now
+            <span className="material-symbols-outlined text-[16px] md:text-[18px]">arrow_outward</span>
+          </button>
+          <button onClick={() => navigate('/residents')} className="bg-[#f0eee7] text-[#1e1e1e] font-label-md text-sm md:text-label-md px-4 md:px-8 py-2.5 md:py-4 rounded-xl hover:bg-[#e4e1da] transition-all duration-300 shadow-sm w-full sm:w-auto justify-center">
+            Meet Our Pets
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-4 sm:gap-x-8 sm:gap-y-4">
@@ -57,9 +67,9 @@ const Home = () => {
       </div>
     </div>
 
-    <div className="relative w-full self-stretch flex items-start md:items-center justify-center pb-4 md:pb-0 min-h-[300px] md:min-h-[400px]">
+    <div className="hidden md:flex relative w-full self-stretch items-end justify-center min-h-[300px] md:min-h-[400px]">
       {/* Hero Image / Logo */}
-      <img className="w-full h-full object-contain object-top md:object-center drop-shadow-sm transform scale-[1.2] sm:scale-[1.3] md:scale-[1.5] lg:scale-[1.6] xl:scale-[1.3] -mt-12 md:-mt-20 lg:-mt-24" src="/images/logo-transparent-v2.png" alt="Sheger Petland Logo" />
+      <img className="w-full h-full max-h-[400px] md:max-h-[600px] object-contain object-bottom drop-shadow-sm transform scale-[0.9] sm:scale-[1] md:scale-[1.1] lg:scale-[1.15] origin-bottom translate-y-2 md:translate-y-6 lg:translate-y-8" src="/images/golden_retriever_hero.png" alt="Golden Retriever Hero" />
     </div>
   </div>
 </section>

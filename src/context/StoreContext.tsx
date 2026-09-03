@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, type ReactNode } from 'react';
 
 export interface BasketItem {
-  id: number;
+  id: number | string;
   name: string;
   color: string;
   size: string;
@@ -13,8 +13,8 @@ export interface BasketItem {
 interface StoreContextType {
   basketItems: BasketItem[];
   addToBasket: (item: BasketItem) => void;
-  updateQuantity: (id: number, delta: number) => void;
-  removeItem: (id: number) => void;
+  updateQuantity: (id: number | string, delta: number) => void;
+  removeItem: (id: number | string) => void;
   favorites: Record<string | number, boolean>;
   toggleFavorite: (id: string | number) => void;
 }
@@ -35,7 +35,7 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  const updateQuantity = (id: number, delta: number) => {
+  const updateQuantity = (id: number | string, delta: number) => {
     setBasketItems(prev => prev.map(item => {
       if (item.id === id) {
         return { ...item, quantity: Math.max(1, item.quantity + delta) };
@@ -44,7 +44,7 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
     }));
   };
 
-  const removeItem = (id: number) => {
+  const removeItem = (id: number | string) => {
     setBasketItems(prev => prev.filter(item => item.id !== id));
   };
 

@@ -60,7 +60,7 @@ export const residentsData = [
 const Residents = () => {
   const [activeTab, setActiveTab] = useState('all');
   const [sortBy, setSortBy] = useState('newest');
-  const { favorites, toggleFavorite } = useStore();
+  const { favorites, toggleFavorite, addToBasket } = useStore();
   const navigate = useNavigate();
 
   const tabs = [
@@ -135,12 +135,29 @@ const Residents = () => {
                 <p className="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3 flex-1">
                   {resident.description}
                 </p>
-                <div className="flex gap-4 mt-auto">
-                  <button onClick={() => navigate(`/resident/${resident.id}`)} className="flex-1 bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md py-3 rounded-lg hover:border-primary hover:text-primary transition-colors" type="button">
-                    Read Profile
-                  </button>
-                  <button onClick={() => alert(`Interest expressed for ${resident.name}!`)} className="flex-1 bg-primary text-on-primary font-label-md text-label-md py-3 rounded-lg hover:bg-on-primary-fixed-variant transition-colors shadow-sm" type="button">
-                    Express Interest
+                <div className="flex flex-col gap-2 mt-auto">
+                  <div className="flex gap-2">
+                    <button onClick={() => navigate(`/resident/${resident.id}`)} className="flex-1 bg-surface-container border border-outline-variant text-on-surface font-label-md text-[12px] py-2 rounded-lg hover:border-primary hover:text-primary transition-colors" type="button">
+                      Read Profile
+                    </button>
+                    <button onClick={() => alert(`Interest expressed for ${resident.name}!`)} className="flex-1 bg-primary text-on-primary font-label-md text-[12px] py-2 rounded-lg hover:bg-on-primary-fixed-variant transition-colors shadow-sm" type="button">
+                      Express Interest
+                    </button>
+                  </div>
+                  <button onClick={() => {
+                    addToBasket({
+                      id: resident.id,
+                      name: resident.name,
+                      color: 'N/A',
+                      size: 'N/A',
+                      price: 250,
+                      quantity: 1,
+                      image: resident.image
+                    });
+                    alert(`Added ${resident.name} to basket!`);
+                  }} className="w-full bg-secondary text-on-secondary font-label-md text-[12px] py-2 rounded-lg hover:bg-secondary-fixed-dim transition-colors shadow-sm flex items-center justify-center gap-2" type="button">
+                    <span className="material-symbols-outlined text-[16px]">shopping_cart</span>
+                    Buy
                   </button>
                 </div>
               </div>

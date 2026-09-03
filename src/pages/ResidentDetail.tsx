@@ -67,7 +67,7 @@ const mockDatabase: Record<string, any> = {
 const ResidentDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { toggleFavorite, favorites } = useStore();
+  const { toggleFavorite, favorites, addToBasket } = useStore();
   const petDetails = id ? mockDatabase[id] : null;
 
   if (!petDetails) {
@@ -150,6 +150,21 @@ const ResidentDetail = () => {
               <button onClick={() => alert(`Your interest for ${petDetails.name} has been recorded! We'll contact you soon.`)} className="w-full bg-primary text-on-primary font-label-lg py-4 rounded-xl hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-center gap-2 shadow-sm hover:shadow-md hover:-translate-y-1">
                 <span className="material-symbols-outlined">waving_hand</span>
                 Express Interest
+              </button>
+              <button onClick={() => {
+                addToBasket({
+                  id: petDetails.id,
+                  name: petDetails.name,
+                  color: 'N/A',
+                  size: petDetails.size || 'N/A',
+                  price: 250,
+                  quantity: 1,
+                  image: petDetails.images[0]
+                });
+                alert(`Added ${petDetails.name} to basket!`);
+              }} className="w-full bg-secondary text-on-secondary font-label-lg py-4 rounded-xl hover:bg-secondary-container hover:text-on-secondary-container transition-all flex items-center justify-center gap-2 shadow-sm hover:shadow-md hover:-translate-y-1">
+                <span className="material-symbols-outlined">shopping_cart</span>
+                Buy Now
               </button>
             </div>
 
