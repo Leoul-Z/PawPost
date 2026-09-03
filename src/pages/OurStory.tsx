@@ -2,9 +2,6 @@ const OurStory = () => {
   return (
     <main className="flex-1">
       <section className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden bg-surface-container-highest">
-        <div className="absolute inset-0 z-0 flex items-center justify-center pt-20">
-          <img className="h-4/5 w-auto object-contain opacity-20" src="/images/logo.jpg" alt="ሸገር Petland Logo Background" />
-        </div>
         <div className="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-3xl mx-auto flex flex-col items-center">
           <img src="/images/logo.jpg" alt="ሸገር Petland Logo" className="w-32 h-32 rounded-full border-4 border-surface shadow-lg mb-8 bg-white" />
           <span className="font-label-md text-label-md text-primary uppercase tracking-widest mb-4 block font-bold">Our Story</span>
