@@ -81,7 +81,6 @@ const ResidentDetail = () => {
     );
   }
 
-  const isFavorite = favorites[petDetails.id];
 
   return (
     <main className="flex-1 bg-surface-container-lowest pb-20">
