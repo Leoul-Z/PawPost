@@ -1,8 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useStore } from '../context/StoreContext';
+import { products } from './Shop';
 
 const ProductDetail = () => {
+  const { id } = useParams<{ id: string }>();
+  const product = products.find(p => p.id === parseInt(id || '1')) || products[0];
   const [quantity, setQuantity] = useState(1);
   const { favorites, toggleFavorite, addToBasket } = useStore();
   return (
@@ -11,7 +14,7 @@ const ProductDetail = () => {
 
         <div className="space-y-6">
           <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-surface-container-lowest soft-shadow border border-surface-variant relative group">
-            <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A beautifully crafted, hand-woven cotton pet leash in muted earthy tones of terracotta and sage green, coiled elegantly on a textured stone surface. Next to it is a premium leather collar with brass hardware. The lighting is bright and directional, emphasizing the tactile textures of the materials. The overall aesthetic is high-end, minimal, and artisanal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_WMzZZp9Y93kjYiGt746A4vdWkxc29xYfj9r8gwXvkG8NAvTAN4xhTGD-Q_gsyMsTI5q6nivjvuob3srZZ7k7YIxolQ3nJlyCYUT0j9F0PrSjsiRJpetHPpe0tUuI5B-rtoMDso5S0av14Cd5uN19I5oroIzOQ-ZqQqp9W2AWAInpiI4X0u-RhSnsI6lTusfi7S0pS8ZVmHraAMeWHLghyrmPTH_fHrXRBQ1xDbDIKfVo0HpKg0b6" />
+            <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={product.name} src={product.image} />
             <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/40 shadow-sm">
               <span className="font-label-md text-[12px] text-primary uppercase tracking-wider font-bold">Best Seller</span>
             </div>
@@ -19,10 +22,10 @@ const ProductDetail = () => {
 
           <div className="grid grid-cols-4 gap-4">
             <button className="aspect-square rounded-lg overflow-hidden border-2 border-primary ring-2 ring-primary/20 bg-surface-container">
-              <img className="w-full h-full object-cover" data-alt="Close up of the brass hardware on the woven leash, showing high quality solid brass snap hook." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2vQxVn7P6G0QzT5-w9T6-J_O4A_q1Ff29S5T9Y0R-4wNq_Jt3Jb7E4-x581P9D8nZl9h4-vWc9aZ3A9q1A7A6K5B3L9Q9X1n5_n9C5P8T5w4C4S6v6_n_M4a_B9a4X9G0D_n9M5F5n4D8J_q8X2G8a6v5Y9B9n4Z_K7D0D8x1K5M9J9K9S6M0K4A8A6P_H8H_L0L4M6X5_M9_F6K_S6_w7C0_a8J1J2T8n8T9_" />
+              <img className="w-full h-full object-cover" alt={product.name} src={product.image} />
             </button>
             <button className="aspect-square rounded-lg overflow-hidden border border-outline-variant hover:border-primary transition-colors bg-surface-container opacity-70 hover:opacity-100">
-              <img className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" data-alt="Texture shot of the woven cotton material in terracotta." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2F9A9n7X8C5X1D_K9_J0V4G9M4A_S6n4D8A_V5S4T8Q1V8_n6_J5Z8V1V9V1M9D9D9T8C5n9B4Z8Q9T8P8J_q1T5A8_q9B9X5M8T0Z_Z5F8A5D_n5A0T8A4Z0V4J5B5P9D4D0Z1_a1n6V4V9A6J0D8Z_M9T5S_X5K0P0n5Q1J4A5Z4A4S1K_X5T9J9A4A_K9n9T9Z4D8J9_n6n9A4T1T1A9B9B0K4D_n4K4X1Z0K9" />
+              <img className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" alt={product.name} src={product.image} />
             </button>
             <button className="aspect-square rounded-lg overflow-hidden border border-outline-variant hover:border-primary transition-colors bg-surface-container opacity-70 hover:opacity-100 flex items-center justify-center">
               <span className="material-symbols-outlined text-on-surface-variant">play_circle</span>
@@ -41,21 +44,21 @@ const ProductDetail = () => {
                 <span className="material-symbols-outlined text-[16px] mx-1">chevron_right</span>
               </li>
               <li className="inline-flex items-center">
-                <Link className="hover:text-primary transition-colors" to="/accessories">Accessories</Link>
+                <Link className="hover:text-primary transition-colors" to="/shop">{product.category}</Link>
               </li>
               <li>
                 <span className="material-symbols-outlined text-[16px] mx-1">chevron_right</span>
               </li>
               <li aria-current="page" className="text-on-surface">
-                Heritage Woven Leash
+                {product.name}
               </li>
             </ol>
           </nav>
 
-          <h1 className="font-display-lg text-headline-lg md:text-display-lg text-on-surface mb-2">Heritage Woven Leash</h1>
-          <p className="font-headline-md text-headline-md text-secondary mb-6">Br 48.00</p>
+          <h1 className="font-display-lg text-headline-lg md:text-display-lg text-on-surface mb-2">{product.name}</h1>
+          <p className="font-headline-md text-headline-md text-secondary mb-6">Br {product.price.toFixed(2)}</p>
           <div className="prose prose-stone prose-p:font-body-md prose-p:text-on-surface-variant mb-8">
-            <p>Hand-dyed cotton rope with solid brass hardware. Durable enough for the trails, elegant enough for the city. Each piece is crafted by local artisans and built to age beautifully alongside your companion.</p>
+            <p>{product.desc}</p>
           </div>
 
           <form className="space-y-8 mb-10" onSubmit={(e) => { 
@@ -64,13 +67,13 @@ const ProductDetail = () => {
             const color = formData.get('color') as string;
             const size = formData.get('size') as string;
             addToBasket({
-              id: 1, // Using 1 for this product
-              name: 'Heritage Woven Leash',
+              id: product.id,
+              name: product.name,
               color: color === 'terracotta' ? 'Terracotta & Sage' : color === 'indigo' ? 'Indigo & Cream' : 'Charcoal & Grey',
               size: size === 'standard' ? 'Standard (5ft)' : 'Long (7ft)',
-              price: 48,
+              price: product.price,
               quantity: quantity,
-              image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC_WMzZZp9Y93kjYiGt746A4vdWkxc29xYfj9r8gwXvkG8NAvTAN4xhTGD-Q_gsyMsTI5q6nivjvuob3srZZ7k7YIxolQ3nJlyCYUT0j9F0PrSjsiRJpetHPpe0tUuI5B-rtoMDso5S0av14Cd5uN19I5oroIzOQ-ZqQqp9W2AWAInpiI4X0u-RhSnsI6lTusfi7S0pS8ZVmHraAMeWHLghyrmPTH_fHrXRBQ1xDbDIKfVo0HpKg0b6'
+              image: product.image
             });
             // Optional: You could add a small visual toast/alert here if desired
           }}>
@@ -139,8 +142,8 @@ const ProductDetail = () => {
                 Add to Basket
               </button>
 
-              <button onClick={() => toggleFavorite(1)} className={`w-14 h-14 border rounded-lg flex items-center justify-center transition-colors bg-surface-container-lowest ${favorites[1] ? 'text-primary border-primary bg-primary-container/10' : 'text-on-surface-variant border-outline hover:text-primary hover:border-primary'}`} type="button">
-                <span className="material-symbols-outlined" style={{ fontVariationSettings: `"'FILL' ${favorites[1] ? '1' : '0'}"` }}>favorite</span>
+              <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(`product_${product.id}`); }} className={`w-14 h-14 border rounded-lg flex items-center justify-center transition-colors bg-surface-container-lowest ${favorites[`product_${product.id}`] ? 'text-primary border-primary bg-primary-container/10' : 'text-on-surface-variant border-outline hover:text-primary hover:border-primary'}`} type="button">
+                <span className="material-symbols-outlined" style={{ fontVariationSettings: `"'FILL' ${favorites[`product_${product.id}`] ? '1' : '0'}"` }}>favorite</span>
               </button>
             </div>
           </form>
@@ -161,17 +164,6 @@ const ProductDetail = () => {
                   <li>Lay flat to dry out of direct sunlight</li>
                   <li>Brass will develop a natural patina over time; polish if desired.</li>
                 </ul>
-              </div>
-            </details>
-            <details className="group py-4">
-              <summary className="flex justify-between items-center font-headline-md text-[18px] text-on-surface cursor-pointer list-none hover:text-primary transition-colors">
-                <span>Shipping &amp; Returns</span>
-                <span className="transition group-open:rotate-180">
-                  <span className="material-symbols-outlined">expand_more</span>
-                </span>
-              </summary>
-              <div className="text-body-md font-body-md text-on-surface-variant mt-4 leading-relaxed">
-                <p>Free standard shipping on orders over Br 75. Due to the handcrafted nature of this item, please allow 2-3 business days for processing before shipment. Returns accepted within 30 days of delivery in unused condition.</p>
               </div>
             </details>
           </div>

@@ -22,8 +22,8 @@ const Home = () => {
         Premium Products for Happy Pets
       </div>
 
-      <h1 className="font-display-lg text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] xl:text-[64px] leading-[1.1] text-[#1e1e1e] mb-6 font-bold tracking-tight text-balance">
-        The Smarter Way to Care <br/>
+      <h1 className="font-display-lg text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] xl:text-[64px] leading-[1.1] text-[#1e1e1e] mb-6 font-bold tracking-tight">
+        The Smarter Way to Care <br className="hidden md:block" />
         <span className="text-[#c4a484]">for the Ones Who Love You Most.</span>
       </h1>
       
@@ -47,22 +47,22 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-4 sm:gap-x-8 sm:gap-y-4">
-        <div className="flex items-center gap-3 text-[#8e8574]">
-          <span className="material-symbols-outlined text-[32px] text-[#c4a484] opacity-50" style={{ fontVariationSettings: `"'FILL' 0, 'wght' 200"` }}>pets</span>
-          <span className="font-label-md text-[12px] leading-tight">Pet-Loving<br/>Essence</span>
+      <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:flex sm:flex-wrap sm:gap-x-12 sm:gap-y-6 w-full">
+        <div className="flex items-center gap-4 text-[#8e8574]">
+          <span className="material-symbols-outlined text-[32px] text-[#c4a484] opacity-50 shrink-0" style={{ fontVariationSettings: `"'FILL' 0, 'wght' 200"` }}>pets</span>
+          <span className="font-label-md text-[13px] leading-tight">Pet-Loving<br/>Essence</span>
         </div>
-        <div className="flex items-center gap-3 text-[#8e8574]">
-          <span className="material-symbols-outlined text-[32px] text-[#c4a484] opacity-50" style={{ fontVariationSettings: `"'FILL' 0, 'wght' 200"` }}>favorite</span>
-          <span className="font-label-md text-[12px] leading-tight">Emotional<br/>Connection</span>
+        <div className="flex items-center gap-4 text-[#8e8574]">
+          <span className="material-symbols-outlined text-[32px] text-[#c4a484] opacity-50 shrink-0" style={{ fontVariationSettings: `"'FILL' 0, 'wght' 200"` }}>favorite</span>
+          <span className="font-label-md text-[13px] leading-tight">Emotional<br/>Connection</span>
         </div>
-        <div className="flex items-center gap-3 text-[#8e8574]">
-          <span className="material-symbols-outlined text-[32px] text-[#c4a484] opacity-50" style={{ fontVariationSettings: `"'FILL' 0, 'wght' 200"` }}>verified_user</span>
-          <span className="font-label-md text-[12px] leading-tight">Trust &<br/>Quality</span>
+        <div className="flex items-center gap-4 text-[#8e8574]">
+          <span className="material-symbols-outlined text-[32px] text-[#c4a484] opacity-50 shrink-0" style={{ fontVariationSettings: `"'FILL' 0, 'wght' 200"` }}>verified_user</span>
+          <span className="font-label-md text-[13px] leading-tight">Trust &<br/>Quality</span>
         </div>
-        <div className="flex items-center gap-3 text-[#8e8574]">
-          <span className="material-symbols-outlined text-[32px] text-[#c4a484] opacity-50" style={{ fontVariationSettings: `"'FILL' 0, 'wght' 200"` }}>volunteer_activism</span>
-          <span className="font-label-md text-[12px] leading-tight">Togetherness<br/>& Care</span>
+        <div className="flex items-center gap-4 text-[#8e8574]">
+          <span className="material-symbols-outlined text-[32px] text-[#c4a484] opacity-50 shrink-0" style={{ fontVariationSettings: `"'FILL' 0, 'wght' 200"` }}>volunteer_activism</span>
+          <span className="font-label-md text-[13px] leading-tight">Togetherness<br/>& Care</span>
         </div>
       </div>
     </div>

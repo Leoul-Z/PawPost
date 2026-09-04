@@ -132,13 +132,13 @@ const Shop = () => {
                       <span className="bg-primary/90 backdrop-blur-sm text-on-primary px-2 py-1 rounded font-label-md text-[10px] uppercase tracking-wider">New</span>
                     </div>
                   )}
-                  <button onClick={() => toggleFavorite(product.id)} aria-label="Add to favorites" className={`absolute top-3 right-3 w-8 h-8 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors transform translate-y-2 group-hover:translate-y-0 duration-300 ${favorites[product.id] ? 'bg-surface text-primary opacity-100 translate-y-0' : 'bg-surface/80 text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100'}`}>
-                    <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: `"'FILL' ${favorites[product.id] ? '1' : '0'}"` }}>favorite</span>
+                  <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(`product_${product.id}`); }} aria-label="Add to favorites" className={`absolute top-3 right-3 w-8 h-8 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors transform translate-y-2 group-hover:translate-y-0 duration-300 ${favorites[`product_${product.id}`] ? 'bg-surface text-primary opacity-100 translate-y-0' : 'bg-surface/80 text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100'}`}>
+                    <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: `"'FILL' ${favorites[`product_${product.id}`] ? '1' : '0'}"` }}>favorite</span>
                   </button>
                 </div>
                 <div className="flex-1 flex flex-col">
                   <h3 className="font-headline-md text-[18px] text-on-surface group-hover:text-primary transition-colors mb-1">
-                    <Link to="/product">{product.name}</Link>
+                    <Link to={`/product/${product.id}`}>{product.name}</Link>
                   </h3>
                   <p className="font-caption text-caption text-on-surface-variant mb-3 flex-1">{product.desc}</p>
                   <div className="flex justify-between items-center mt-auto">

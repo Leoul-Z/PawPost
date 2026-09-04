@@ -7,10 +7,9 @@ const Favorites = () => {
   const { favorites, toggleFavorite, addToBasket } = useStore();
   const navigate = useNavigate();
 
-  // Dynamically resolve IDs to displayable items
   const catalog = Object.fromEntries([
-    ...residentsData.map(r => [r.id, { type: 'resident', name: r.name, desc: `${r.breed} • ${r.gender}`, img: r.image }]),
-    ...products.map(p => [p.id.toString(), { type: 'product', id: p.id, name: p.name, color: p.category, size: 'One Size', price: p.price, img: p.image }])
+    ...residentsData.map(r => [`resident_${r.id}`, { type: 'resident', id: r.id, name: r.name, desc: `${r.breed} • ${r.gender}`, img: r.image }]),
+    ...products.map(p => [`product_${p.id}`, { type: 'product', id: p.id, name: p.name, color: p.category, size: 'One Size', price: p.price, img: p.image }])
   ]);
 
   const favoriteIds = Object.keys(favorites).filter(id => favorites[id]);
@@ -48,11 +47,11 @@ const Favorites = () => {
                   <button onClick={() => toggleFavorite(id)} className="absolute top-2 right-2 p-2 text-primary hover:text-secondary transition-colors z-10" aria-label="Remove from favorites">
                     <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: `"'FILL' 1"` }}>favorite</span>
                   </button>
-                  <div className="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-surface-container cursor-pointer" onClick={() => navigate(item.type === 'product' ? '/product' : '/residents')}>
+                  <div className="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-surface-container cursor-pointer" onClick={() => navigate(item.type === 'product' ? `/product/${item.id}` : `/resident/${item.id}`)}>
                     <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-headline-md text-[18px] text-on-surface mb-1 truncate cursor-pointer hover:text-primary transition-colors" onClick={() => navigate(item.type === 'product' ? '/product' : '/residents')}>
+                    <h3 className="font-headline-md text-[18px] text-on-surface mb-1 truncate cursor-pointer hover:text-primary transition-colors" onClick={() => navigate(item.type === 'product' ? `/product/${item.id}` : `/resident/${item.id}`)}>
                       {item.name}
                     </h3>
                     <p className="font-caption text-caption text-on-surface-variant mb-2 truncate">

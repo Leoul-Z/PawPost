@@ -112,7 +112,7 @@ const Residents = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           {filteredResidents.map((resident) => (
             <article key={resident.id} className="group flex flex-col">
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-surface-container mb-6 relative soft-shadow">
+              <div className="aspect-[2/3] rounded-2xl overflow-hidden bg-surface-container mb-6 relative soft-shadow">
                 <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={resident.name} src={resident.image} />
                 {resident.badge && (
                   <div className="absolute top-4 left-4 flex gap-2">
@@ -122,8 +122,8 @@ const Residents = () => {
                   </div>
                 )}
 
-                <button onClick={() => toggleFavorite(resident.id)} className={`absolute top-4 right-4 w-10 h-10 backdrop-blur-md rounded-full flex items-center justify-center transition-all shadow-sm transform hover:scale-110 active:scale-95 ${favorites[resident.id] ? 'bg-white text-primary' : 'bg-white/80 text-on-surface-variant hover:text-primary hover:bg-white'}`} aria-label={`Favorite ${resident.name}`} type="button">
-                  <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: `"'FILL' ${favorites[resident.id] ? '1' : '0'}"` }}>favorite</span>
+                <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(`resident_${resident.id}`); }} className={`absolute top-4 right-4 w-10 h-10 backdrop-blur-md rounded-full flex items-center justify-center transition-all shadow-sm transform hover:scale-110 active:scale-95 ${favorites[`resident_${resident.id}`] ? 'bg-white text-primary' : 'bg-white/80 text-on-surface-variant hover:text-primary hover:bg-white'}`} aria-label={`Favorite ${resident.name}`} type="button">
+                  <span className="material-symbols-outlined" style={{ fontVariationSettings: `"'FILL' ${favorites[`resident_${resident.id}`] ? '1' : '0'}"` }}>favorite</span>
                 </button>
               </div>
               <div className="flex-1 flex flex-col">

@@ -37,7 +37,7 @@ const Basket = () => {
                   <div className="flex justify-between items-start">
                     <div>
                       <h3 className="font-headline-md text-[20px] text-on-surface mb-1">
-                        <Link className="hover:text-primary transition-colors" to="/product">{item.name}</Link>
+                        <Link className="hover:text-primary transition-colors" to={`/product/${item.id}`}>{item.name}</Link>
                       </h3>
                       <ul className="font-body-md text-body-md text-on-surface-variant space-y-1">
                         <li>Color: <span className="text-on-surface">{item.color}</span></li>

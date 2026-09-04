@@ -98,14 +98,15 @@ const ResidentDetail = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
 
           <div className="space-y-4">
-            <div className="aspect-square rounded-2xl overflow-hidden bg-surface-container relative">
+            <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-surface-container relative">
               <img src={petDetails.images[0]} alt={petDetails.name} className="w-full h-full object-cover" />
               <button 
-                onClick={() => toggleFavorite(petDetails.id)} 
-                className={`absolute top-4 right-4 w-12 h-12 backdrop-blur-md rounded-full flex items-center justify-center transition-all shadow-sm transform hover:scale-110 active:scale-95 ${isFavorite ? 'bg-white text-primary' : 'bg-white/80 text-on-surface-variant hover:text-primary hover:bg-white'}`}
+                type="button"
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(`resident_${petDetails.id}`); }} 
+                className={`absolute top-4 right-4 w-12 h-12 backdrop-blur-md rounded-full flex items-center justify-center transition-all shadow-sm transform hover:scale-110 active:scale-95 ${favorites[`resident_${petDetails.id}`] ? 'bg-white text-primary' : 'bg-white/80 text-on-surface-variant hover:text-primary hover:bg-white'}`}
                 aria-label="Toggle Favorite"
               >
-                <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: `"'FILL' ${isFavorite ? '1' : '0'}"` }}>favorite</span>
+                <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: `"'FILL' ${favorites[`resident_${petDetails.id}`] ? '1' : '0'}"` }}>favorite</span>
               </button>
             </div>
 
